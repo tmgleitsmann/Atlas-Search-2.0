@@ -1,0 +1,14 @@
+.players-retrieved-wrapper{
+  background-image: url('../../images/retrieved-bg.jpg');
+  background-size: cover;
+  height: 1400px;
+  overflow:hidden;
+}
+.pr-wrap{
+  display:flex;
+  flex-direction:row;
+  justify-content: space-evenly;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  padding:25px 45px 25px 45px;
+}

@@ -1,0 +1,28 @@
+.overall{
+  background-image:url('../../images/homepage-bg.jpg');
+  height: 920px;
+  background-size:cover;
+  background-position: top;
+  overflow:hidden;
+}
+.wrapper{
+  margin:0px 40px;
+  padding-top:10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex: 1;
+  //background-color: rgb(240, 240, 240);
+}
+
+.sub-search{
+  margin:15px 40px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex: 1;
+  background-color: rgba(40, 40, 40, .6);
+  border-radius: 5px;
+}
