@@ -23,13 +23,20 @@ Initial page render. Here you can query a quick search or navigate to Countries,
 
 **Search Page Preview** <br />
 Search page initial render. Here you can toggle different api endpoints to hit and filter players by attributes & name.
-![Homepage](/github-images/searchplayer.png)
+![SearchPage](/github-images/searchplayer.png)
 
 **Query Results Preview** <br />
 Query results initial render. List results from hitting the api endpoints.
-![Homepage](/github-images/queryresults.png)
+![QueryResults](/github-images/queryresults.png)
 
 **Build Team Preview** <br />
 Build Team render from persistent MongoDB collection. 
-![Homepage](/github-images/buildteam.png)
+![BuildTeam](/github-images/buildteam.png)
 
+**Search Country Preview** <br />
+Search country initial render. Here you can reduce and/or select a country you would like to filter by.
+![SearchCountry](/github-images/country.png)
+
+**Search Club Preview** <br />
+Search club initial render. Here you can reduce and/or select a club you would like to filter by.
+![SearchClub](/github-images/club.png)
