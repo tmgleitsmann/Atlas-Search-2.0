@@ -8,8 +8,8 @@ const SearchBar = ({namecallback, color}) => {
   const handleChange = (e) => {
     setPlayerName(e.target.value);
     namecallback(e.target.value, false);
+    //console.log('handling change ', e.target.value);
   }
-
   const focusInput = (component) => {
     if (component) {
       component.focus();
@@ -19,15 +19,14 @@ const SearchBar = ({namecallback, color}) => {
     e.preventDefault();
     namecallback(playerName, true);
   }
-  
+
   
   return(
     <div className={`${iconClicked ? 'input-wrapper':'disabled input-wrapper'} ${color}`}>
-    <form onSubmit={(e)=>submitInput(e)}>
-      <input onChange={(e)=>handleChange(e)} 
-        onSubmit={(e)=>{submitInput(e)}}
-        type='text' 
-        className='input-text' 
+    <form onSubmit={(e)=>submitInput(e)}> 
+      <input id="myInput" autoComplete="off" onChange={(e)=>handleChange(e)} 
+        type='text'
+        className='input-text'
         ref={focusInput}
       />
       </form>

@@ -5,6 +5,7 @@ import axios from "axios";
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Attributes from '../../components/Attributes/Attributes';
 import SelectForm from '../../components/SelectForm/SelectForm';
+import {getPlayers} from '../../autocomplete-script/soccer';
 import './SearchPlayers.styles.scss';
 import {basicApiUrl, autocompleteApiUrl, fuzzyApiUrl, wildcardApiUrl} from '../../ApiRoutes';
 
@@ -17,12 +18,18 @@ const SearchPlayers = ({history}) => {
   const playerCallback = async(value, query) => {
     setPlayerName(value);
     if(query){
+      if(urlString === autocompleteApiUrl){
+        setUrlString(basicApiUrl);
+      }
       const players = await axios.get(`${urlString}?arg=${playerName}`).then((req)=>req.data);
-      console.log(players);
       history.push({
         pathname:'/players-retrieved',
         state: { players, }
       })
+    }
+    else if(urlString === autocompleteApiUrl){
+      console.log('in player callback ', value);
+      getPlayers(value, setPlayerName);
     }
   }
 
@@ -77,7 +84,7 @@ const SearchPlayers = ({history}) => {
     <div className='sp-wrapper'>
       <Header />
       <div className='sp-sb'>
-        <SearchBar callback={playerCallback} color={'blue'}/>
+        <SearchBar namecallback={playerCallback} color={'blue'}/>
         <div className='sp-select-form'>
           <SelectForm listTitle={'Select API URL'} values={listValues} callbackfn={urlCallback}/>
         </div>

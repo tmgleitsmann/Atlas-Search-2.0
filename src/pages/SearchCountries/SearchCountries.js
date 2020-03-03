@@ -24,7 +24,7 @@ const SearchCountries = () => {
     <div className='countries-overall'>
       <Header />
       <div className='sp-sb'>
-        <SearchBar callback={countryCallback} color={'red'}/>
+        <SearchBar namecallback={countryCallback} color={'red'}/>
       </div>
       <div className='wrapper'>
         {

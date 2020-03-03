@@ -24,7 +24,7 @@ const SearchClubs = () =>{
     <div className='club-overall'>
       <Header />
       <div className='sp-sb'>
-        <SearchBar callback={clubCallback} color={'green'}/>
+        <SearchBar namecallback={clubCallback} color={'green'}/>
       </div>
       <div className='wrapper'>
         {

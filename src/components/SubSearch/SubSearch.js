@@ -7,6 +7,7 @@ import CustomButton from '../Button/Button';
 import SearchBar from '../SearchBar/SearchBar';
 import SelectForm from '../SelectForm/SelectForm';
 import Slider, { Range } from 'rc-slider';
+import {getPlayers} from '../../autocomplete-script/soccer';
 import 'rc-slider/assets/index.css';
 import './SubSearch.styles.scss';
 import {basicApiUrl, autocompleteApiUrl, fuzzyApiUrl, wildcardApiUrl} from '../../ApiRoutes';
@@ -22,14 +23,22 @@ const SubSearch = ({history}) => {
   const [urlString, setUrlString] = useState(basicApiUrl);
 
   const nameCallbackFn = (value, submit) =>{
+    console.log(urlString);
     setPlayerName(value);
     if(submit){
-      quickSubmit();
+      return quickSubmit();
+    }
+    if(urlString === autocompleteApiUrl){
+      getPlayers(value, setPlayerName);
+      console.log('past getplayers');
     }
     return;
   }
 
   const quickSubmit = async() => {
+    if(urlString === autocompleteApiUrl){
+      setUrlString(basicApiUrl);
+    }
     const players = await axios.get(`${urlString}?arg=${playerName}&natin=${countrySelected}&club=${clubSelected}&foot=&pos=&lowEnd=&highEnd=`).then((req)=>req.data);
     const filtered = players.filter(player=>{
       if(starsSelected*80 <= player.Skill.$numberInt){
