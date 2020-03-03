@@ -19,7 +19,7 @@ The rest of the attributes get passed into the MongoDB Stich Api Query string an
 
 **Homepage Preview** <br />
 Initial page render. Here you can query a quick search or navigate to Countries, Clubs or Player search pages.
-![Homepage](/github-images/homescreen.png)
+![Homepage](/github-images/landing.png)
 
 **Search Page Preview** <br />
 Search page initial render. Here you can toggle different api endpoints to hit and filter players by attributes & name.
