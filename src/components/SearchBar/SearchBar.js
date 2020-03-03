@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import './SearchBar.styles.scss';
 
-const SearchBar = ({callback, color}) => {
+const SearchBar = ({namecallback, color}) => {
   const [playerName, setPlayerName] = useState('');
   const [iconClicked, toggleIconClicked] = useState(false);
 
   const handleChange = (e) => {
     setPlayerName(e.target.value);
-    callback(e.target.value, false);
+    namecallback(e.target.value, false);
   }
 
   const focusInput = (component) => {
@@ -17,7 +17,7 @@ const SearchBar = ({callback, color}) => {
   };
   const submitInput = (e)=>{
     e.preventDefault();
-    callback(playerName, true);
+    namecallback(playerName, true);
   }
   
   

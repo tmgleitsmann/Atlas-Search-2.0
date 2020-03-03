@@ -4,50 +4,35 @@ import axios from 'axios';
 import StarBlock from '../StarBlock/StarBlock';
 import SliderComponent from '../Slider/Slider';
 import CustomButton from '../Button/Button';
+import SearchBar from '../SearchBar/SearchBar';
+import SelectForm from '../SelectForm/SelectForm';
+import Slider, { Range } from 'rc-slider';
+import 'rc-slider/assets/index.css';
 import './SubSearch.styles.scss';
-import {basicApiUrl} from '../../ApiRoutes';
+import {basicApiUrl, autocompleteApiUrl, fuzzyApiUrl, wildcardApiUrl} from '../../ApiRoutes';
 
+const listValues = ['Basic', 'Autocomplete', 'Fuzzy Matching', 'Wildcard'];
 
 const SubSearch = ({history}) => {
 
   const [starsSelected, setStars] = useState(1);
   const [countrySelected, setCountry] = useState('');
   const [clubSelected, setClub] = useState('');
-  const [positionSelected, setPosition] = useState('');
-  const [minOverall, setMinOverall] = useState(1);
-  const [maxOverall, setMaxOverall] = useState(99);
+  const [playerName, setPlayerName] = useState('');
+  const [urlString, setUrlString] = useState(basicApiUrl);
 
-  const positionCheck = (playerPositions) =>{
-    switch(positionSelected){
-      case 'Forward':
-        if(playerPositions.includes('ST') || playerPositions.includes('CF') || playerPositions.includes('LW') || playerPositions.includes('RW')){
-          return 'Forward';
-        }
-      case 'Midfielder':
-        if(playerPositions.includes('CAM') || playerPositions.includes('CM') || playerPositions.includes('LM') || playerPositions.includes('RM')){
-          return 'Midfielder';
-        }
-      case 'Defender':
-        if(playerPositions.includes('CB') || playerPositions.includes('LB') || playerPositions.includes('RB') || playerPositions.includes('LWB') 
-          || playerPositions.includes('RWB')){
-            return 'Defender';
-        }
-      case 'Goalkeeper':
-        if(playerPositions.includes('GK')){
-          return 'Goalkeeper';
-        }
-      default:
-        return '';
+  const nameCallbackFn = (value, submit) =>{
+    setPlayerName(value);
+    if(submit){
+      quickSubmit();
     }
+    return;
   }
 
-
   const quickSubmit = async() => {
-    //will need to filter by position selected & stars selected
-    console.log(positionSelected);
-    const players = await axios.get(`${basicApiUrl}?arg=&natin=${countrySelected}&club=${clubSelected}&foot=&pos=&lowEnd=${minOverall}&highEnd=${maxOverall}`).then((req)=>req.data);
+    const players = await axios.get(`${urlString}?arg=${playerName}&natin=${countrySelected}&club=${clubSelected}&foot=&pos=&lowEnd=&highEnd=`).then((req)=>req.data);
     const filtered = players.filter(player=>{
-      if(starsSelected*80 <= player.Skill.$numberInt && positionSelected === positionCheck(player.Position)){
+      if(starsSelected*80 <= player.Skill.$numberInt){
         return true;
       }
     })
@@ -60,9 +45,20 @@ const SubSearch = ({history}) => {
   const starsCallback = (value) => {
     setStars(value)
   };
-  const sliderCallback = (value, attribute) => {
-    setMinOverall(value[0]);
-    setMaxOverall(value[1]);
+
+  const urlCallback = (urlValue) =>{
+    switch(urlValue){
+      case 'Basic':
+        return setUrlString(basicApiUrl);
+      case 'Autocomplete':
+        return setUrlString(autocompleteApiUrl);
+      case 'Fuzzy Matching':
+        return setUrlString(fuzzyApiUrl);
+      case 'Wildcard':
+        return setUrlString(wildcardApiUrl);
+      default:
+        return setUrlString(basicApiUrl);
+    }
   }
 
   const assignFromForm = (event, value) => {
@@ -71,8 +67,6 @@ const SubSearch = ({history}) => {
         return setCountry(event.target.value);
       case 'clubs':
         return setClub(event.target.value);
-      case 'positions':
-        return setPosition(event.target.value);
       default:
         return;
     }
@@ -84,24 +78,10 @@ const SubSearch = ({history}) => {
 
   return(
     <div className='quicksearch'>
-      <span className='description' style={{color:'white', textDecoration:'underline'}}>Quickly Filter Attributes</span>
+      <span className='description' style={{color:'white', fontSize:'26px'}}>PLAYER SEARCH</span>
       <div className='attributes'>
         <div className='column1'>
-          <span>Position</span>
-            <form>
-              <select onChange={(e) => assignFromForm(e, 'positions')} className="select-css">
-                <option selected='selected' disabled>Select a Position</option>
-                <option>Forward</option>
-                <option>Midfielder</option>
-                <option>Defender</option>
-                <option>Goalkeeper</option>
-              </select>
-              <i className="far fa-futbol"></i>
-            </form>
-
-
           <span>Country</span>
-
           <form>
               <select onChange={(e) => assignFromForm(e, 'countries')} className="select-css">
                 <option selected='selected' disabled>Select a Country</option>
@@ -127,12 +107,12 @@ const SubSearch = ({history}) => {
           </form>
         </div>
         <div className='column2'>
+          <SearchBar namecallback={nameCallbackFn} color={'white'}/>
+          <SelectForm listTitle={'Select API URL'} values={listValues} callbackfn={urlCallback}/>
           <span>Skill Moves</span>
           <StarBlock data={{changeStars:starsCallback}}className='starblock'/>
         </div>
         <div className='column3'>
-          <span>Overall</span>
-            <SliderComponent data={{minValue:minOverall, maxValue:maxOverall, callbackFn:sliderCallback, attribute:'Overall'}} />
           <span>Club</span>
             <form>
               <select onChange={(e) => assignFromForm(e, 'clubs')} className="select-css">

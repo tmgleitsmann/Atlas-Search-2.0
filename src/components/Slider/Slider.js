@@ -4,7 +4,10 @@ import 'rc-slider/assets/index.css';
 import './Slider.styles.scss';
 
 const SliderComponent = ({data}) => {
+
   const changeSliderValues = (event) => {
+    console.log(event);
+    console.log(data);
     data.callbackFn(event, data.attribute);
   }
 

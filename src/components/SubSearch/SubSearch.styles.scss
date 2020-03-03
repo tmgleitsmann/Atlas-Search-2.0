@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:200');
 
-
 .quicksearch{
   display:flex;
   flex-direction: column;
@@ -31,7 +30,7 @@
       padding: 20px;
       text-align: center;
       font-size:38px;
-      justify-content: space-between;
+      justify-content: center;
       color:white;
     }
     .column2{
@@ -48,12 +47,14 @@
     .column3{
       display:flex;
       flex-direction: column;
-      font-family: Raleway;
       padding: 20px;
       text-align: center;
       font-size:38px;
-      justify-content: space-between;
+      justify-content: center;
       color:white;
+      span{
+        font-family: Raleway;
+      }
     }
   }
 }
