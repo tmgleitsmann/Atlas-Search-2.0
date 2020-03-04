@@ -15,7 +15,8 @@ Note that there is some front-end filtering that can affect search results.
 * Physicality
 * Pace
 
-The rest of the attributes get passed into the MongoDB Stich Api Query string and is filtered for in DB. 
+The rest of the attributes get passed into the MongoDB Stich Api Query string and is filtered for in DB. <br />
+Autocomplete option on searches will trigger an autocomplete query on each keystroke & display the best 6 player options. The logic for this can be found in soccer.js.
 
 **Homepage Preview** <br />
 Initial page render. Here you can query a quick search or navigate to Countries, Clubs or Player search pages.
