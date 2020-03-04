@@ -9,7 +9,8 @@ import './PlayersRetrieved.styles.scss';
 const PlayersRetrieved = (props) => {
   const playersList = props.location.state.players;
   return(
-    <div className='players-retrieved-wrapper'>
+    
+    <div className={`${playersList.length > 0 ? 'players-retrieved-wrapper':'no-players-retrieved-wrapper'}`}>
     <Header />
     <div className='pr-wrap'>
       {

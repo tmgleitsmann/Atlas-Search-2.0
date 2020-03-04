@@ -4,6 +4,13 @@
   height: 1400px;
   overflow:hidden;
 }
+.no-players-retrieved-wrapper{
+  background-image: url('../../images/no-results.jpg');
+  background-position:center;
+  background-size: cover;
+  height: 1400px;
+  overflow:hidden;
+}
 .pr-wrap{
   display:flex;
   flex-direction:row;
@@ -12,3 +19,4 @@
   flex-wrap: wrap;
   padding:25px 45px 25px 45px;
 }
+
