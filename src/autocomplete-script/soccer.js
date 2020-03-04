@@ -42,24 +42,20 @@ export const userActionAll = async (searchString) =>
 
 function autocomplete(inp, arr, callback) {
     var currentFocus;
-
-    /*******This event listener is slow to recieve input*****/
-    inp.addEventListener("input", function(e) {        
-        var a, b, i, line, val = this.value;
-        console.log(arr);
+      
+        //var a, b, i, line, val = this.value;
         /*close any already open lists of autocompleted values*/
         closeAllLists();
-        if (!val) { return false;}
         currentFocus = -1;
         /*create a DIV element that will contain the items (values):*/
-        a = document.createElement("DIV");
-        a.setAttribute("id", this.id + "autocomplete-list");
+        let a = document.createElement("DIV");
+        a.setAttribute("id", inp.id + "autocomplete-list");
         a.setAttribute("class", "autocomplete-items");
         let counter = 0;
-        for (i = 0; i < arr.length; i++){
-            if (arr[i].Last.substr(0, val.length).toUpperCase() === val.toUpperCase()){
+        for (let i = 0; i < arr.length; i++){
+            if (arr[i].Last.substr(0, inp.value.length).toUpperCase() === inp.value.toUpperCase()){
                 console.log(arr[i].Last+" is a match so far");
-                b = document.createElement("DIV");             
+                let b = document.createElement("DIV");             
                 b.innerHTML ="<p>" + arr[i].Last + "</p>";
                 b.innerHTML += `<input type='hidden' value="${arr[i].Last}">`;
                 /*execute a function when someone clicks on the item value (DIV element):*/
@@ -73,14 +69,13 @@ function autocomplete(inp, arr, callback) {
                 counter +=1;
                 a.appendChild(b);
                 if(counter == 1){
-                    this.parentNode.appendChild(a);
+                    inp.parentNode.appendChild(a);
                 }
             }
             if(counter==5){
                 break;
             }
         }
-    });
 
 
     function addActive(x) {
