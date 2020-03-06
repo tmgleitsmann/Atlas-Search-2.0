@@ -22,6 +22,7 @@ const SearchPlayers = ({history}) => {
         setUrlString(basicApiUrl);
       }
       const players = await axios.get(`${urlString}?arg=${playerName}`).then((req)=>req.data);
+      console.log(players);
       history.push({
         pathname:'/players-retrieved',
         state: { players, }
@@ -36,17 +37,23 @@ const SearchPlayers = ({history}) => {
 
 
   const attributeCallback = async(object) => {
-    const natin=object.countrySelected;
+    const natin= object.countrySelected;
+    const natex = object.exCountrySelected;
     const foot=object.prefferedBoot;
     const club=object.clubSelected;
     const pos = object.positionSelected;
     const lowend = object.minOverall;
     const highend = object.maxOverall;
-    const players = await axios.get(`${urlString}?arg=${playerName}&natin=${natin}&club=${club}&foot=${foot}&pos=${pos}&lowEnd=${lowend}&highEnd=${highend}`).then((req)=>req.data);
-    console.log(`${urlString}?arg=${playerName}&natin=${natin}&club=${club}&foot=${foot}&pos=${pos}&lowEnd=${lowend}&highEnd=${highend}`);
+    let players;
+    if(natex.length > 0){
+      console.log('natex is being triggered');
+      players = await axios.get(`${urlString}?arg=${playerName}&natex=${natex}&club=${club}&foot=${foot}&pos=${pos}&lowEnd=${lowend}&highEnd=${highend}`).then((req)=>req.data);
+    }
+    else{
+      players = await axios.get(`${urlString}?arg=${playerName}&natin=${natin}&club=${club}&foot=${foot}&pos=${pos}&lowEnd=${lowend}&highEnd=${highend}`).then((req)=>req.data);
+    }
     
-    console.log(object.minDribbling, object.maxDribbling, object.minDefending, object.maxDefending, object.minPace, object.maxPace
-      , object.minShooting, object.maxShooting, object.minPhysicality, object.maxPhysicality, object.minPassing, object.maxPassing);
+
     const filtered = players.filter(player => {
       if(object.minPace <= player.Speed.$numberInt && object.maxPace >= player.Speed.$numberInt
         && object.minDribbling <= player.Dribbling.$numberInt && object.maxDribbling >= player.Dribbling.$numberInt

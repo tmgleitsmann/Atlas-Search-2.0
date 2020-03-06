@@ -7,12 +7,12 @@ import {updateTeam, removePlayer} from '../../redux/actions/playerActions';
 import {postPlayers, removePlayers} from '../../ApiRoutes';
 import axios from 'axios';
 
-const PlayerCard = ({imageUrl, id, name, position, overall, club, country, history, cardId, setPlayer, removePlayer, playerData, selectPlayer, updateTeam}) => {
+const PlayerCard = ({imageUrl, name, position, overall, club, country, history, cardId, setPlayer, removePlayer, playerData, selectPlayer, updateTeam}) => {
 
   const handleClick = () =>{
     if(Object.entries(playerData).length > 0){
       updateTeam(playerData, cardId);
-      axios.post(`${postPlayers}?ID=${id}&value=${cardId}`);
+      axios.post(`${postPlayers}?ID=${playerData.id}&value=${cardId}`);
     }
     else if(name.length > 1){
       removePlayer(cardId);

@@ -38,6 +38,7 @@ const Attributes = ({callback}) => {
   const [starsSelected, setStars] = useState(1);
   const [clubSelected, setClub] = useState('');
   const [countrySelected, setCountry] = useState('');
+  const [exCountrySelected, setExCountry] = useState('');
   const [positionSelected, setPosition] = useState('');
 
   const starsCallback = (value) => {
@@ -45,11 +46,16 @@ const Attributes = ({callback}) => {
   };
 
   const selectformCallback = (value, key) => {
+    console.log(key);
     switch(key){
       case 'Clubs':
         return setClub(value);
-      case 'Countries':
+      case 'In Countries':
+        setExCountry('');
         return setCountry(value);
+      case 'Ex Countries':
+        setCountry('');
+        return setExCountry(value)
       case 'Positions':
         return setPosition(value);
       default:
@@ -77,6 +83,7 @@ const Attributes = ({callback}) => {
       starsSelected,
       clubSelected, 
       countrySelected,
+      exCountrySelected,
       positionSelected
     };
     callback(callbackObj);
@@ -141,7 +148,10 @@ const Attributes = ({callback}) => {
           <SliderComponent className='attrib-slider' data={{minValue:minPassing, maxValue:maxPassing, callbackFn:sliderCallback, attribute:'Passing'}} />
           <span className='attrib-span'>Defending</span>
           <SliderComponent className='attrib-slider' data={{minValue:minDefending, maxValue:maxDefending, callbackFn:sliderCallback, attribute:'Defending'}} />
-          <SelectForm listTitle={'Countries'} values={countries} callbackfn={selectformCallback}/>
+          <div className='countries-btns'>
+            <SelectForm listTitle={'In Countries'} values={countries} callbackfn={selectformCallback}/>
+            <SelectForm listTitle={'Ex Countries'} values={countries} callbackfn={selectformCallback}/>
+          </div>
         </div>
         <div className='attrib-column3'>
           <span className='attrib-span'>Physicality</span>  
