@@ -52,6 +52,8 @@
   .player-ind-text{
     color:white;
   }
+  transform: scale(1.4);
+  transition: transform .8s cubic-bezier(0.1, 0.2, 0.2, 0.8);
 }
 .player-ind-wrapper:active{
   box-shadow:none;
