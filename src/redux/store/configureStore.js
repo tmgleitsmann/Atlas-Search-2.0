@@ -4,7 +4,7 @@ import playerReducer from '../reducers/playerReducer';
 import selectPlayerReducer from '../reducers/selectPlayerReducer';
 import playerDataReducer from '../reducers/playerDataReducer';
 import thunk from 'redux-thunk';
-import PlayersRetrieved from '../../pages/PlayersRetrieved/PlayersRetrieved';
+//import PlayersRetrieved from '../../pages/PlayersRetrieved/PlayersRetrieved';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

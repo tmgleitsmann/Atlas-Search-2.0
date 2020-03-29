@@ -39,6 +39,7 @@ export const preloadPlayers = () => {
               foot:player.Foot.$numberInt,
               skill:Math.floor(player.Skill.$numberInt/80)
             }, player.value.$numberLong));
+            return true;
         });
     })
     .catch((res) => {return Promise.reject(res);});

@@ -6,7 +6,7 @@ import ClubSlots from '../../components/ClubSlots/ClubSlots';
 import './SearchClubs.styles.scss';
 
 const SearchClubs = () =>{
-  const [images, setImages] = useState(imageList.items);
+  const [images] = useState(imageList.items);
   const [filterClub, setFilterClub] = useState('');
 
   const clubCallback = (value) => {

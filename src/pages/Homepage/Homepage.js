@@ -6,7 +6,8 @@ import imageList from '../../images/images';
 import './Homepage.styles.scss';
 
 const Homepage = () =>{
-  const [images, setImages] = useState(imageList.items);
+  const [images] = useState(imageList.items);
+  console.log(images)
   return(
     <div className='overall'>
       <Header />

@@ -6,7 +6,7 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import './SearchCountries.styles.scss';
 
 const SearchCountries = () => {
-  const [images, setImages] = useState(imageList.items);
+  const [images] = useState(imageList.items);
   const [filterCountry, setFilterCountry] = useState('');
 
   const countryCallback = (value) => {

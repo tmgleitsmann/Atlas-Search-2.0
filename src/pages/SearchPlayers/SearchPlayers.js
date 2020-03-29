@@ -38,22 +38,15 @@ const SearchPlayers = ({history}) => {
 
   const attributeCallback = async(object) => {
     const natin= object.countrySelected;
-    const natex = object.exCountrySelected;
+    //const natex = object.exCountrySelected;
     const foot=object.prefferedBoot;
     const club=object.clubSelected;
     const pos = object.positionSelected;
     const lowend = object.minOverall;
     const highend = object.maxOverall;
-    let players;
-    if(natex.length > 0){
-      console.log('natex is being triggered');
-      players = await axios.get(`${urlString}?arg=${playerName}&natex=${natex}&club=${club}&foot=${foot}&pos=${pos}&lowEnd=${lowend}&highEnd=${highend}`).then((req)=>req.data);
-    }
-    else{
-      players = await axios.get(`${urlString}?arg=${playerName}&natin=${natin}&club=${club}&foot=${foot}&pos=${pos}&lowEnd=${lowend}&highEnd=${highend}`).then((req)=>req.data);
-    }
-    
 
+    const players = await axios.get(`${urlString}?arg=${playerName}&natin=${natin}&club=${club}&foot=${foot}&pos=${pos}&lowEnd=${lowend}&highEnd=${highend}`).then((req)=>req.data);
+  
     const filtered = players.filter(player => {
       if(object.minPace <= player.Speed.$numberInt && object.maxPace >= player.Speed.$numberInt
         && object.minDribbling <= player.Dribbling.$numberInt && object.maxDribbling >= player.Dribbling.$numberInt
@@ -64,6 +57,7 @@ const SearchPlayers = ({history}) => {
         && object.starsSelected*80 <= Number(player.Skill.$numberInt)){
         return true;
       }
+      return false;
     })
     history.push({
       pathname:'/players-retrieved',
