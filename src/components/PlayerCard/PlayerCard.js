@@ -36,7 +36,7 @@ const PlayerCard = ({imageUrl, name, position, overall, club, country, history, 
   return(
     <div className={`${cardStyler()} player-card-container`} onClick={handleClick}>
       <div className='player-card-image'>
-        <img style={{height:'48px', width:'48px'}} src={imageUrl}/>
+        <img style={{height:'48px', width:'48px'}} src={imageUrl} alt=''/>
       </div>
       <div className='player-card-attribs'>
         <span>{name}</span>

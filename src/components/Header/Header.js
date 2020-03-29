@@ -6,7 +6,7 @@ import './Header.styles.scss';
 const Header = () => (
   <div className = 'container'>
     <div className='title'>
-      <Link to='/'><div className='option'><img src={icon}/><span>atlas search</span></div></Link>
+      <Link to='/'><div className='option'><img src={icon} alt=''/><span>atlas search</span></div></Link>
     </div>
     <div className='options'>
       <Link to='/about'><div className='option'><i className="fas fa-question"></i><span>about</span></div></Link>

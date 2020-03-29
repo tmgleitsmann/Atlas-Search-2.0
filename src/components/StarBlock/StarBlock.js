@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './StarBlock.styles.scss';
 
 const StarBlock = ({data}) => {

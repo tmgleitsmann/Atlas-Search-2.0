@@ -5,7 +5,6 @@ import './CountrySlots.styles.scss'
 import {basicApiUrl} from '../../ApiRoutes';
 
 const CountrySlots = ({title, imagePath, history}) => {
-
   const queryCountries = async() =>{
     const players = await axios.get(`${basicApiUrl}?arg=&natin=${title}&club=&foot=&pos=&lowEnd="1"&highEnd="99"`).then((req)=>req.data);
     history.push({
@@ -19,7 +18,7 @@ const CountrySlots = ({title, imagePath, history}) => {
     <div className='content'>
       <div className='wrapper'>
         <div className={`background imgwrapper`} onClick={() =>queryCountries()}>
-          <img alt='' src={imagePath} />
+          <img alt='' src={imagePath.default} />
           <span className='countryTitles'>{title.toUpperCase()}</span>
         </div>
       </div>

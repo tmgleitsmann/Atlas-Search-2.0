@@ -1,12 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {withRouter} from 'react-router-dom';
 import axios from 'axios';
 import StarBlock from '../StarBlock/StarBlock';
-import SliderComponent from '../Slider/Slider';
 import CustomButton from '../Button/Button';
 import SearchBar from '../SearchBar/SearchBar';
 import SelectForm from '../SelectForm/SelectForm';
-import Slider, { Range } from 'rc-slider';
 import {getPlayers} from '../../autocomplete-script/soccer';
 import 'rc-slider/assets/index.css';
 import './SubSearch.styles.scss';
@@ -44,6 +42,7 @@ const SubSearch = ({history}) => {
       if(starsSelected*80 <= player.Skill.$numberInt){
         return true;
       }
+      return false;
     })
     history.push({
       pathname:'/players-retrieved',

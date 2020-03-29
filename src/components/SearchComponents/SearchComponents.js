@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom';
 import './SearchComponent.styles.scss';
 
 const SearchComponent = ({imagePath, title, description, history}) => {
-
+  //console.log(imagePath.default);
   const pickIcon = (titleSelected) => {
     switch(titleSelected){
       case 'countries':
@@ -22,7 +22,7 @@ const SearchComponent = ({imagePath, title, description, history}) => {
     <div className='content'>
       <div className='wrapper'>
         <div className={`background ${title}`} onClick={() => history.push(`${title}`)} >
-            <img alt='' src={imagePath} />
+            <img src={imagePath.default} alt='' />
             <i className={`${pickIcon(title)}`}></i>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import FormationSelector from './FormationSelector/FormationSelector';
 import {FORMATION_ONE, FORMATION_TWO, FORMATION_THREE, FORMATION_FOUR} from './Formations/Formations';
 //import individual formations here.

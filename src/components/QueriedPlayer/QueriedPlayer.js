@@ -50,7 +50,7 @@ const QueriedPlayer = ({playerData, activeObj, history, assignPlayer, updateTeam
       <div className='player-ind-text'>
         <div className='player-ind-header'>
           <span>{playerData.Name}</span>
-          <img style={{height:'48px', width:'48px'}}src={playerData.Photo}/>
+          <img style={{height:'48px', width:'48px'}}src={playerData.Photo} alt=''/>
         </div>
         <div className='player-ind-body-overall'>
           <div className='player-ind-body-col1'>

@@ -17,7 +17,7 @@ const ClubSlots = ({title, imagePath, history}) => {
     <div className='content'>
       <div className='wrapper'>
         <div className={`background imgwrapper`} onClick={()=>queryClubs()}>
-          <img alt='' src={imagePath} />
+          <img alt='' src={imagePath.default} />
           <span className='countryTitles'>{title.toUpperCase()}</span>
         </div>
       </div>
