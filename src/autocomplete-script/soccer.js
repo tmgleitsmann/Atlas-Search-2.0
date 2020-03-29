@@ -41,73 +41,73 @@ export const userActionAll = async (searchString) =>
 }
 
 function autocomplete(inp, arr, callback) {
-    var currentFocus;
+    //var currentFocus;
       
-        //var a, b, i, line, val = this.value;
-        /*close any already open lists of autocompleted values*/
-        closeAllLists();
-        currentFocus = -1;
-        /*create a DIV element that will contain the items (values):*/
-        let a = document.createElement("DIV");
-        a.setAttribute("id", inp.id + "autocomplete-list");
-        a.setAttribute("class", "autocomplete-items");
-        let counter = 0;
-        for (let i = 0; i < arr.length; i++){
-            if (arr[i].Last.substr(0, inp.value.length).toUpperCase() === inp.value.toUpperCase()){
-                console.log(arr[i].Last+" is a match so far");
-                let b = document.createElement("DIV");             
-                b.innerHTML ="<p>" + arr[i].Last + "</p>";
-                b.innerHTML += `<input type='hidden' value="${arr[i].Last}">`;
-                /*execute a function when someone clicks on the item value (DIV element):*/
-                b.addEventListener("click", function(e) {
-                    const valueToAppend = this.getElementsByTagName("input")[0].value;
-                    inp.value = valueToAppend;
-                    callback(valueToAppend);
-                    closeAllLists();
+    //var a, b, i, line, val = this.value;
+    /*close any already open lists of autocompleted values*/
+    closeAllLists();
+    //currentFocus = -1;
+    /*create a DIV element that will contain the items (values):*/
+    let a = document.createElement("DIV");
+    a.setAttribute("id", inp.id + "autocomplete-list");
+    a.setAttribute("class", "autocomplete-items");
+    let counter = 0;
+    for (let i = 0; i < arr.length; i++){
+        if (arr[i].Last.substr(0, inp.value.length).toUpperCase() === inp.value.toUpperCase()){
+            console.log(arr[i].Last+" is a match so far");
+            let b = document.createElement("DIV");             
+            b.innerHTML ="<p>" + arr[i].Last + "</p>";
+            b.innerHTML += `<input type='hidden' value="${arr[i].Last}">`;
+            /*execute a function when someone clicks on the item value (DIV element):*/
+            b.addEventListener("click", function(e) {
+                const valueToAppend = this.getElementsByTagName("input")[0].value;
+                inp.value = valueToAppend;
+                callback(valueToAppend);
+                closeAllLists();
 
-                });
-                counter +=1;
-                a.appendChild(b);
-                if(counter == 1){
-                    inp.parentNode.appendChild(a);
-                }
-            }
-            if(counter==5){
-                break;
+            });
+            counter +=1;
+            a.appendChild(b);
+            if(counter === 1){
+                inp.parentNode.appendChild(a);
             }
         }
-
-
-    function addActive(x) {
-        /*a function to classify an item as "active":*/
-        if (!x) return false;
-        /*start by removing the "active" class on all items:*/
-        removeActive(x);
-        if (currentFocus >= x.length) currentFocus = 0;
-        if (currentFocus < 0) currentFocus = (x.length - 1);
-        /*add class "autocomplete-active":*/
-        x[currentFocus].classList.add("autocomplete-active");
-    }
-    function removeActive(x) {
-        /*a function to remove the "active" class from all autocomplete items:*/
-        for (var i = 0; i < x.length; i++) {
-            x[i].classList.remove("autocomplete-active");
+        if(counter===5){
+            break;
         }
     }
+
+
+    // function addActive(x) {
+    //     /*a function to classify an item as "active":*/
+    //     if (!x) return false;
+    //     /*start by removing the "active" class on all items:*/
+    //     removeActive(x);
+    //     if (currentFocus >= x.length) currentFocus = 0;
+    //     if (currentFocus < 0) currentFocus = (x.length - 1);
+    //     /*add class "autocomplete-active":*/
+    //     x[currentFocus].classList.add("autocomplete-active");
+    // }
+    // function removeActive(x) {
+    //     /*a function to remove the "active" class from all autocomplete items:*/
+    //     for (var i = 0; i < x.length; i++) {
+    //         x[i].classList.remove("autocomplete-active");
+    //     }
+    // }
     function closeAllLists(elmnt) {
         /*close all autocomplete lists in the document,
         except the one passed as an argument:*/
         var x = document.getElementsByClassName("autocomplete-items");
         for (var i = 0; i < x.length; i++) {
-            if (elmnt != x[i] && elmnt != inp) {
+            if (elmnt !== x[i] && elmnt !== inp) {
                 x[i].parentNode.removeChild(x[i]);
             }
         }
     }
     /*execute a function when someone clicks in the document:*/
-    document.addEventListener("click", function (e) {
-        closeAllLists(e.target);
-    });
+    // document.addEventListener("click", function (e) {
+    //     closeAllLists(e.target);
+    // });
 }
 
 // UNCOMMENT WHEN CALLING PREFIX:TRUE API for AUTOCOMPLETED TITLES
