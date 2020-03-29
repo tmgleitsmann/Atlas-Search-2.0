@@ -3,8 +3,10 @@ Atlas-Search-2.0
 ReactJS application that utilizes Redux, MongoDB stitch and the FIFA 20 players dataset to showcase MongoDB's new Atlas Search functionality.
 
 Haven't built out the login and about page yet. They might stay in the header component for aesthetics.
-This application has a lot of images and isn't configured with webpack so FOUC can and will occur. 
-This application isn't compiled down to es5 with babel so it may crash on some browswers. 
+Didn't style it with css grid (didn't know about it yet), so it doesn't dynamically resize with the browser. Maybe on 3.0.
+
+TO RUN: npm install then npm run build:dev then npm run dev-server
+
 
 Note that there is some front-end filtering that can affect search results.
 * Skill
