@@ -5,7 +5,7 @@ ReactJS application that utilizes Redux, MongoDB stitch and the FIFA 20 players 
 Haven't built out the login and about page yet. They might stay in the header component for aesthetics.
 Didn't style it with css grid (didn't know about it yet), so it doesn't dynamically resize with the browser. Maybe on 3.0.
 
-TO RUN: npm install then npm run build:dev then npm run dev-server
+TO RUN: npm install then npm run build:dev then npm run dev-server (if errors after npm install, run npm audit fix)
 
 
 Note that there is some front-end filtering that can affect search results.
