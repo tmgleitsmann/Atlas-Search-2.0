@@ -1,0 +1,20 @@
+.sp-wrapper{
+  background-image: url('../../images/selectplayers.jpg');
+  background-position:top;
+  padding-bottom: 20px;
+  height: 1000px;
+  display:flex;
+  flex-direction:column;
+  justify-content: flex-start;
+  overflow:hidden;
+}
+.sp-sb{
+  padding-top:20px;
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+  .sp-select-form{
+    text-align:center;
+    margin-top:-20px;
+  }
+}
