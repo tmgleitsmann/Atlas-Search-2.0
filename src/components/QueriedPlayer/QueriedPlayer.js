@@ -45,12 +45,16 @@ const QueriedPlayer = ({playerData, activeObj, history, assignPlayer, updateTeam
     }
   }
 
+  const handleImgError = e => {
+    e.target.src = "../images/player.png"
+  }
+
   return(
     <div className='player-ind-wrapper' onClick={pushPlayer}>
       <div className='player-ind-text'>
         <div className='player-ind-header'>
           <span>{playerData.Name}</span>
-          <img style={{height:'48px', width:'48px'}}src={playerData.Photo} alt=''/>
+          <img style={{height:'48px', width:'48px'}}src={playerData.Photo} onError={handleImgError}/>
         </div>
         <div className='player-ind-body-overall'>
           <div className='player-ind-body-col1'>

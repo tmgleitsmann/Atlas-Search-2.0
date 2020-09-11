@@ -14,6 +14,7 @@ const clubs = ['Arsenal FC', 'AS Roma','Atletico Madrid',
 
 const countries = ['Argentina', 'Austria', 'Brazil', 'Colombia', 'England', 'France', 'Germany',
   'Greece', 'Italy', 'Mexico', 'Netherlands', 'Poland', 'Portugal', 'Spain', 'USA'];
+  
 
 const positions = ['ST', 'CF', 'LF', 'RF', 'LW', 'RW', 'CAM', 'CM', 'LM', 'RM', 'CDM', 'LWB', 'LB',
   'RWB', 'RB', 'CB', 'GK'];
