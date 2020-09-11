@@ -1,0 +1,49 @@
+.skills{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  width: 300px;
+  position: relative;
+}
+
+.skills label{
+  display: block;
+  cursor:pointer;
+  width:50px;
+}
+
+.skills input{
+  display: none;
+}
+
+.skills label:before{
+  content: '\f005';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  position: relative;
+  display: block;
+  font-size: 50px;
+  color: rgba($color: #fad83e, $alpha: 0.3);
+}
+
+.skills label:after{
+  content: '\f005';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  position: absolute;
+  display: block;
+  font-size: 50px;
+  color: rgba($color: #fad83e, $alpha: 1.0);
+  top: 0;
+  opacity: 0;
+  transition: .3s;
+  text-shadow: 0 2px 3px rgba(0, 0, 0, .7);
+}
+
+.skills label:hover:after,
+.skills label:hover ~ label:after,
+.skills input:checked ~ label:after
+{
+  opacity: 1;
+}
+

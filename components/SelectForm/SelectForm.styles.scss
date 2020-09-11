@@ -1,0 +1,17 @@
+.select-form-wrapper{
+  margin-top:20px;
+  margin-bottom:20px;
+  width: 300px;
+  .select-form-container{
+    width: 50%;
+    font-family: Raleway;
+    font-size:12px;
+    text-align:center;
+    margin-left:15px
+  }
+  .dropdown-icon{
+    position:relative;
+    transform: translate(-25px, 2px);
+    font-size:20px;
+  }
+}

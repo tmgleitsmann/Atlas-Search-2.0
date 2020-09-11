@@ -1,0 +1,18 @@
+.formation-selector-wrapper{
+  display: flex;
+  width: 100px;
+  justify-content: center;
+  padding: 20px;
+}
+.formation-select-form{
+  width: 100%;
+  align-self: center;
+  cursor: pointer;
+}
+.fa-caret-down{
+  position: relative;
+  transform:translate(-20px, -10px);
+  cursor: pointer;
+  pointer-events: none;
+
+}
